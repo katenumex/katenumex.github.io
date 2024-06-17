@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Upload</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+        .upload-container {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        input[type="file"] {
+            margin: 20px 0;
+        }
+        video {
+            width: 100%;
+            height: auto;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="upload-container">
+        <h1>Upload a Video</h1>
+        <input type="file" id="videoUpload" accept="video/*">
+        <div id="videoContainer"></div>
+    </div>
+
+    <script>
+        document.getElementById('videoUpload').addEventListener('change', function(event) {
+            var file = event.target.files[0];
+            if (file) {
+                var videoContainer = document.getElementById('videoContainer');
+                videoContainer.innerHTML = '';
+
+                var videoElement = document.createElement('video');
+                videoElement.controls = true;
+                videoElement.src = URL.createObjectURL(file);
+                videoContainer.appendChild(videoElement);
+            }
+        });
+    </script>
+</body>
+</html>
