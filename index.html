@@ -29,17 +29,32 @@
             border: 1px solid #ccc;
             border-radius: 8px;
             background-color: #fff;
+            cursor: pointer;
+        }
+        video::-webkit-media-controls {
+            display: none !important;
+        }
+        video {
+            opacity: 0.7;
+            transition: opacity 0.3s ease;
+        }
+        video:hover {
+            opacity: 1;
         }
     </style>
 </head>
 <body>
     <h1>Video Gallery</h1>
-    <div class="video-container" id="videoContainer">
-        <video controls>
+    <div class="video-container">
+        <video muted loop preload="metadata" onmouseover="this.play()" onmouseout="this.pause(); this.currentTime=0;">
             <source src="videos/portrait.mp4" type="video/mp4">
             Your browser does not support the video tag.
         </video>
-    
+        <video muted loop preload="metadata" onmouseover="this.play()" onmouseout="this.pause(); this.currentTime=0;">
+            <source src="portrait.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <!-- Add more video elements as needed -->
     </div>
 </body>
 </html>
